@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.shuwen.versionplugin'
+}
+
+import com.shuwen.versionplugin.*
+
+android {
+    namespace 'com.shuwen.sw_common'
+    compileSdk BuildVersion.compileSdkVersion
+
+    defaultConfig {
+        minSdk BuildVersion.minSdkVersion
+        targetSdk BuildVersion.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    // oKHttp
+    implementation BuildConfig.okhttp3
+    implementation BuildConfig.okhttp3_log
+    // retrofit
+    api BuildConfig.retrofit2
+    implementation BuildConfig.gson
+
+    // Koin for Kotlin
+    implementation BuildConfig.koin_core
+
+    // Koin for Android
+    implementation BuildConfig.koin_android
+
+    // Koin for jetPack
+    implementation BuildConfig.koin_jetpack
+
+
+    implementation BuildConfig.core_ktx
+    implementation BuildConfig.appcompat
+    implementation BuildConfig.databinding
+    testImplementation BuildConfig.junit
+    androidTestImplementation BuildConfig.junittest
+}

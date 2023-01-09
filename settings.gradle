@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "swWanAndroid"
 include ':app'
+include ':sw_common'
+include ':sw_home'
+include ':sw_mine'
+includeBuild ('VersionPlugin')

@@ -7,19 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.shuwen.swwanandroid.ui.home.HomeFragment"
+        android:name="com.shuwen.sw_home.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.shuwen.swwanandroid.ui.dashboard.DashboardFragment"
+        android:name="com.shuwen.sw_mine.MineFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_mine" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.shuwen.swwanandroid.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 </navigation>

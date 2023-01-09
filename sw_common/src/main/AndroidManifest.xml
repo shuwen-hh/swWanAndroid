@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name="com.shuwen.common.base.BaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_base" />
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </application>
+
+
+</manifest>
