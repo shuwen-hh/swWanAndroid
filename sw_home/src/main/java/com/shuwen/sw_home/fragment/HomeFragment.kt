@@ -7,6 +7,7 @@ import com.shuwen.sw_home.viewmodel.HomeViewModel
 import com.shuwen.sw_home.R
 import com.shuwen.sw_home.adapter.ArticlesAdapter
 import com.shuwen.sw_home.adapter.HomeBannerAdapter
+import com.shuwen.sw_home.bean.Article
 import com.shuwen.sw_home.databinding.FragmentHomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,6 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModel()
     private var adapter: ArticlesAdapter = ArticlesAdapter()
     var pageIndex = 0
+    private var articleDetailList = mutableListOf<Article.ArticleDetail>()
 
     override fun getLayoutID(): Int {
         return R.layout.fragment_home
@@ -50,7 +52,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         viewModel.articleList.observe(this) {
             viewModel.articleList.value?.data?.let {
-                adapter.article.addAll(0, it.datas)
+                articleDetailList.addAll(it.datas)
+                adapter.setData(articleDetailList)
             }
             adapter.notifyItemRangeInserted(pageIndex * 19,pageIndex * 19 + 19)
         }

@@ -42,7 +42,7 @@ object BuildConfig {
 
     //Depend
     const val junit = "junit:junit:4.13.2"
-    const val espresso_core = "com.android.support.test.espresso:espresso-core:3.0.2"
+    const val espresso_core = "androidx.test.espresso:espresso-core:3.5.0"
     const val guava = "com.google.guava:guava:24.1-jre"
     const val commons = "org.apache.commons:commons-lang3:3.6"
     const val zxing = "com.google.zxing:core:3.3.2"
@@ -74,4 +74,16 @@ object BuildConfig {
     // Glide
     const val glide = "com.github.bumptech.glide:glide:4.14.2"
     const val glide_compiler = "com.github.bumptech.glide:compiler:4.14.2"
+
+    // SwipeRefresh
+    const val swipe_refresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // livedata
+    const val livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
+    // viewModel
+    const val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+    // youthBanner
+    const val youth_banner = "io.github.youth5201314:banner:2.2.2"
 }

@@ -18,8 +18,7 @@ open class BaseRepository {
         liveData: RespStateData<T>,
     ) {
         var result = BaseResp<T>()
-        result.responseState = BaseResp.ResponseState.REQUEST_START
-//        liveData.value = result
+        //        liveData.value = result
 
         try {
             result = block.invoke()
@@ -27,15 +26,12 @@ open class BaseRepository {
             Log.d("BaseRepository", result.errorCode.toString() + "/" + result.errorMsg)
             when (result.errorCode) {
                 Constants.HTTP_SUCCESS -> {
-                    result.responseState = BaseResp.ResponseState.REQUEST_SUCCESS
                 }
                 Constants.HTTP_AUTH_INVALID -> {
-                    result.responseState = BaseResp.ResponseState.REQUEST_FAILED
                     ToastUtil.showMsg("认证过期，请重新登录！")
 //                    ARouter.getInstance().build(Constants.PATH_LOGIN).navigation()
                 }
                 else -> {
-                    result.responseState = BaseResp.ResponseState.REQUEST_FAILED
                     ToastUtil.showMsg("code:" + result.errorCode.toString() + " / msg:" + result.errorMsg)
                 }
             }
@@ -54,7 +50,6 @@ open class BaseRepository {
                     ToastUtil.showMsg("未知错误！")
                 }
             }
-            result.responseState = BaseResp.ResponseState.REQUEST_ERROR
         } finally {
             liveData.value = result
         }

@@ -46,20 +46,17 @@ dependencies {
 
     implementation BuildConfig.core_ktx
     implementation BuildConfig.appcompat
-
-    // Koin for Kotlin
     implementation BuildConfig.koin_core
-
-    // Koin for AndroidX
     implementation BuildConfig.koin_android
-
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation BuildConfig.koin_jetpack
+    implementation BuildConfig.material
+    implementation BuildConfig.constraintLayout
+    implementation BuildConfig.livedata_ktx
+    implementation BuildConfig.viewmodel_ktx
+    implementation BuildConfig.navigation_fragment
+    implementation BuildConfig.navigation_ktx
+    testImplementation BuildConfig.junit
+    androidTestImplementation BuildConfig.junittest
+    androidTestImplementation BuildConfig.espresso_core
+    
 }

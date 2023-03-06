@@ -8,12 +8,14 @@ import android.widget.Toast
  * mail: stewforani@gmail.com
  */
 object ToastUtil {
-    lateinit var mContext:Application
-    fun init(context: Application){
-        mContext= context
+    lateinit var mContext: Application
+
+    fun init(context: Application) {
+        mContext = context
     }
 
-    fun showMsg(str:String){
-        Toast.makeText(mContext,str,Toast.LENGTH_SHORT).show()
+    fun showMsg(str: String) {
+        Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show()
     }
+
 }

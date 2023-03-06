@@ -39,26 +39,17 @@ android {
 
 dependencies {
 
-    // oKHttp
     implementation BuildConfig.okhttp3
     implementation BuildConfig.okhttp3_log
-    // retrofit
     api BuildConfig.retrofit2
     implementation BuildConfig.gson
-
-    // Koin for Kotlin
     implementation BuildConfig.koin_core
-
-    // Koin for Android
     implementation BuildConfig.koin_android
-
-    // Koin for jetPack
     implementation BuildConfig.koin_jetpack
-
-
     implementation BuildConfig.core_ktx
     implementation BuildConfig.appcompat
     implementation BuildConfig.databinding
     testImplementation BuildConfig.junit
     androidTestImplementation BuildConfig.junittest
+
 }
