@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shuwen.common.base.BaseFragment
 import com.shuwen.sw_home.viewmodel.HomeViewModel
-import com.shuwen.sw_home.R
 import com.shuwen.sw_home.adapter.ArticlesAdapter
 import com.shuwen.sw_home.adapter.HomeBannerAdapter
 import com.shuwen.sw_home.bean.Article
@@ -21,8 +20,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     var pageIndex = 0
     private var articleDetailList = mutableListOf<Article.ArticleDetail>()
 
-    override fun getLayoutID(): Int {
-        return R.layout.fragment_home
+    override fun initViewBinding(): FragmentHomeBinding {
+        return FragmentHomeBinding.inflate(layoutInflater)
     }
 
     override fun initView() {

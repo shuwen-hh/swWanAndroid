@@ -12,13 +12,13 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     protected lateinit var binding: VB
 
-    abstract fun getLayoutID(): Int
+    abstract fun initViewBinding(): VB
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutID(), container, false)
+        binding = initViewBinding()
         return binding.root
     }
 

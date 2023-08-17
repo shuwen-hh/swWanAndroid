@@ -1,6 +1,7 @@
 package com.shuwen.swwanandroid
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
@@ -8,32 +9,44 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.shuwen.common.base.BaseActivity
+import com.shuwen.sw_home.fragment.HomeFragment
+import com.shuwen.sw_mine.MineFragment
 import com.shuwen.swwanandroid.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding, ViewModel>() {
 
+    private lateinit var fragmentList: MutableList<Fragment>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val navView: BottomNavigationView = binding.navView
+        fragmentList = mutableListOf()
+        fragmentList.add(HomeFragment())
+        fragmentList.add(MineFragment())
 
+        binding.navHostFragmentActivityMain.adapter = object : FragmentStateAdapter(this) {
+            override fun getItemCount(): Int {
+                return fragmentList.size
+            }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController: NavController = navHostFragment.navController
+            override fun createFragment(position: Int): Fragment {
+                return fragmentList[position]
+            }
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        }
+
+        binding.navView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_home -> binding.navHostFragmentActivityMain.setCurrentItem(0, false)
+                R.id.navigation_dashboard -> binding.navHostFragmentActivityMain.setCurrentItem(1, false)
+            }
+            return@setOnItemSelectedListener true
+        }
     }
 
-    override fun getLayoutID(): Int {
-        return R.layout.activity_main
+    override fun initViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
     }
 }

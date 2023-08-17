@@ -12,10 +12,11 @@ abstract class BaseActivity<VB: ViewBinding, VM: ViewModel> : AppCompatActivity(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, getLayoutID())
+        binding = initViewBinding()
+        setContentView(binding.root)
 
     }
 
-    abstract fun getLayoutID(): Int
+    abstract fun initViewBinding(): VB
 
 }

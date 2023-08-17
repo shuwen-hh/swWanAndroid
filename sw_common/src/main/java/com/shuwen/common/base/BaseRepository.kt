@@ -35,7 +35,6 @@ open class BaseRepository {
                     ToastUtil.showMsg("code:" + result.errorCode.toString() + " / msg:" + result.errorMsg)
                 }
             }
-
         } catch (e: Exception) {
             Log.d("BaseRepository", "dealResp: Exception$e")
             when (e) {
