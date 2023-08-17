@@ -1,6 +1,7 @@
 package com.shuwen.common.util
 
 import android.util.Log
+import com.shuwen.common.interceptor.ApiLogInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,20 +14,17 @@ object HttpUtil {
 
     private var retrofit: Retrofit
 
+    private const val CONNECT_TIME = 5L
+    private const val READ_WRITE_TIME = 10L
+
     init {
-
-        val logInterceptor = HttpLoggingInterceptor {
-            Log.d("OkHttp Log : ", it)
-        }.setLevel(HttpLoggingInterceptor.Level.BODY)
-
         val okHttpClient = OkHttpClient().newBuilder()
-            .callTimeout(10, TimeUnit.SECONDS)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIME, TimeUnit.SECONDS)
+            .readTimeout(READ_WRITE_TIME, TimeUnit.SECONDS)
+            .writeTimeout(READ_WRITE_TIME, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .followRedirects(false)
-            .addInterceptor(logInterceptor)
+            .addInterceptor(ApiLogInterceptor())
             .build()
 
         retrofit = Retrofit.Builder()
@@ -34,7 +32,6 @@ object HttpUtil {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     }
 
     fun <T> getService(service: Class<T>): T {

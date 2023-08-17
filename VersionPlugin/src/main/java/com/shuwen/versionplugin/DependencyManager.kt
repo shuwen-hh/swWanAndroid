@@ -86,4 +86,6 @@ object BuildConfig {
 
     // youthBanner
     const val youth_banner = "io.github.youth5201314:banner:2.2.2"
+
+    const val timber = "com.jakewharton.timber:timber:5.0.1"
 }

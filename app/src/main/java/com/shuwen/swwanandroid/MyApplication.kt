@@ -1,6 +1,7 @@
 package com.shuwen.swwanandroid
 
 import android.app.Application
+import com.shuwen.common.util.LogUtil
 import com.shuwen.common.util.ToastUtil
 import com.shuwen.sw_home.di.homeModule
 import org.koin.android.ext.koin.androidContext
@@ -17,6 +18,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ToastUtil.init(this)
+        LogUtil.initLog()
         initKoin()
     }
 

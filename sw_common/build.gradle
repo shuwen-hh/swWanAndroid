@@ -48,6 +48,7 @@ dependencies {
     implementation BuildConfig.core_ktx
     implementation BuildConfig.appcompat
     implementation BuildConfig.databinding
+    implementation BuildConfig.timber
     testImplementation BuildConfig.junit
     androidTestImplementation BuildConfig.junittest
 

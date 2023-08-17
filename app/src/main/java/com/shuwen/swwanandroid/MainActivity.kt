@@ -34,13 +34,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, ViewModel>() {
             override fun createFragment(position: Int): Fragment {
                 return fragmentList[position]
             }
-
         }
+
+        binding.navHostFragmentActivityMain.isUserInputEnabled = false
 
         binding.navView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_home -> binding.navHostFragmentActivityMain.setCurrentItem(0, false)
-                R.id.navigation_dashboard -> binding.navHostFragmentActivityMain.setCurrentItem(1, false)
+                R.id.navigation_home -> binding.navHostFragmentActivityMain.setCurrentItem(0, true)
+                R.id.navigation_dashboard -> binding.navHostFragmentActivityMain.setCurrentItem(1, true)
             }
             return@setOnItemSelectedListener true
         }
