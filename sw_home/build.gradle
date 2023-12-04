@@ -49,6 +49,8 @@ dependencies {
     implementation BuildConfig.material
     implementation BuildConfig.livedata_ktx
     implementation BuildConfig.viewmodel_ktx
+    implementation BuildConfig.smartRefreshLayout
+    implementation BuildConfig.refreshHeaderClassics
     testImplementation BuildConfig.junit
     androidTestImplementation BuildConfig.junittest
     androidTestImplementation BuildConfig.viewmodel_ktx

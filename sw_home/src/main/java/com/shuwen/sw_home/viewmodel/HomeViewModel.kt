@@ -17,15 +17,18 @@ class HomeViewModel(private val repo: HomeRepo) : BaseViewModel() {
     var topArticleList = RespStateData<TopArticle>()
 
     fun getBanner() {
-        launch { repo.getBanner(bannerList)}
+        launch { repo.getBanner(bannerList) }
     }
 
-    fun getArticles(pageIndex: Int) {
-        launch { repo.getArticles(articleList, pageIndex)}
+    fun getArticles(pageIndex: Int, action: () -> Unit = {}) {
+        launch {
+            repo.getArticles(articleList, pageIndex)
+            action.invoke()
+        }
     }
 
     fun getTopArticles() {
-        launch { repo.getTopArticles(topArticleList)}
+        launch { repo.getTopArticles(topArticleList) }
     }
 
 }

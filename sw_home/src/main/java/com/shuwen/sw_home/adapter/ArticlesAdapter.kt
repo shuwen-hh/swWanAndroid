@@ -15,27 +15,27 @@ import com.shuwen.sw_home.bean.Article
  */
 class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticlesViewHolder>() {
 
-    class DiffCallback : DiffUtil.ItemCallback<Article.ArticleDetail>() {
-        override fun areItemsTheSame(
-            oldItem: Article.ArticleDetail,
-            newItem: Article.ArticleDetail
-        ): Boolean {
-            return oldItem.id == newItem.id
-        }
+    private var mDiffer: AsyncListDiffer<Article.ArticleDetail> =
+        AsyncListDiffer(this, object : DiffUtil.ItemCallback<Article.ArticleDetail>() {
+            override fun areItemsTheSame(
+                oldItem: Article.ArticleDetail,
+                newItem: Article.ArticleDetail
+            ): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-        override fun areContentsTheSame(
-            oldItem: Article.ArticleDetail,
-            newItem: Article.ArticleDetail
-        ): Boolean {
-            return oldItem.title == newItem.title && oldItem.niceDate == newItem.niceDate
-        }
-    }
+            override fun areContentsTheSame(
+                oldItem: Article.ArticleDetail,
+                newItem: Article.ArticleDetail
+            ): Boolean {
+                return oldItem.title == newItem.title && oldItem.niceDate == newItem.niceDate
+            }
 
-    private val mDiffer: AsyncListDiffer<Article.ArticleDetail> = AsyncListDiffer(this, DiffCallback())
-    var reloadListener: ReloadListener? = null
+        })
 
     class ArticlesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title: TextView
+        private var title: TextView
+
         init {
             title = itemView.findViewById(R.id.article_title)
         }
@@ -46,14 +46,11 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticlesViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticlesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.articleitem, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
         return ArticlesViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ArticlesViewHolder, position: Int) {
-        if (position % 17 == 0 && position != 0) {
-            reloadListener?.onReload()
-        }
         holder.bind(getItem(position))
     }
 
@@ -67,10 +64,6 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticlesViewHolder>
 
     private fun getItem(position: Int): Article.ArticleDetail {
         return mDiffer.currentList[position]
-    }
-
-    interface ReloadListener{
-        fun onReload()
     }
 
 }

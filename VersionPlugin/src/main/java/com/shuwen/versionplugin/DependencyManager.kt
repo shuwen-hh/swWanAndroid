@@ -47,6 +47,9 @@ object BuildConfig {
     const val commons = "org.apache.commons:commons-lang3:3.6"
     const val zxing = "com.google.zxing:core:3.3.2"
 
+    const val smartRefreshLayout = "io.github.scwang90:refresh-layout-kernel:2.1.0"
+    const val refreshHeaderClassics = "io.github.scwang90:refresh-header-classics:2.1.0"
+
     //leakcanary
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.4"
 

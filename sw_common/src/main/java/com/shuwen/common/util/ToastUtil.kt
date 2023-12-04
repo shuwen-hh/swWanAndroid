@@ -3,10 +3,6 @@ package com.shuwen.common.util
 import android.app.Application
 import android.widget.Toast
 
-/**
- * Created by stew on 7/27/22.
- * mail: stewforani@gmail.com
- */
 object ToastUtil {
     lateinit var mContext: Application
 

@@ -1,6 +1,5 @@
 package com.shuwen.common.base
 
-import android.util.Log
 import com.shuwen.common.bean.RespStateData
 import com.shuwen.common.util.Constants
 import com.shuwen.common.util.ToastUtil

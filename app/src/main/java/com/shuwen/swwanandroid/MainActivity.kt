@@ -1,6 +1,7 @@
 package com.shuwen.swwanandroid
 
 import android.os.Bundle
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.shuwen.common.base.BaseActivity
 import com.shuwen.sw_home.fragment.HomeFragment
 import com.shuwen.sw_mine.MineFragment
@@ -36,7 +38,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, ViewModel>() {
             }
         }
 
-        binding.navHostFragmentActivityMain.isUserInputEnabled = false
+        binding.navHostFragmentActivityMain.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.navView.menu[position].isChecked = true
+            }
+        })
 
         binding.navView.setOnItemSelectedListener {
             when (it.itemId) {
